@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <div><h1>Employee Directory</h1></div>
     <div class="search-input">
@@ -17,7 +16,6 @@
     </div>
   </header>
 
-  <!-- Controls Toolbar (below header, fixed) -->
   <div class="controls-toolbar">
     <section>
       <label>Sort:
@@ -29,7 +27,7 @@
       </label>
       <label>Show:
         <select id="showCount" onchange="renderEmployees()">
-          <option>10</option>
+          <option selected>10</option>
           <option>25</option>
           <option>50</option>
           <option>100</option>
@@ -41,36 +39,77 @@
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="main-content">
-    <!-- Employee Cards Scroll Area -->
     <div class="content">
       <div id="employeeList" class="card-container"></div>
     </div>
 
-    <!-- Sidebar Filter -->
-    <div class="sidebar hidden" id="filterSidebar">
-      <h3>Filter Employees</h3>
-      <label>First Name:
-        <input type="text" id="filterFirstName" />
-      </label>
-      <label>Department:
-        <input type="text" id="filterDepartment" />
-      </label>
-      <label>Role:
-        <input type="text" id="filterRole" />
-      </label>
-      <div class="sidebar-buttons">
-        <button onclick="renderEmployees()">Apply</button>
-        <button onclick="resetFilters()">Reset</button>
-      </div>
-    </div>
+   <style>
+  .sidebar {
+    padding: 10px;
+    font-size: 14px;
+    width: 250px;
+  }
+
+  .sidebar h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .sidebar label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 13px;
+  }
+
+  .sidebar input[type="text"] {
+    width: 140px;
+    padding: 4px;
+    font-size: 13px;
+  }
+
+  .sidebar-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .sidebar-buttons button {
+    padding: 5px 10px;
+    font-size: 13px;
+  }
+</style>
+
+<div class="sidebar hidden" id="filterSidebar">
+  <h3>Filter Employees</h3>
+
+  <label>
+    First Name:
+    <input type="text" id="filterFirstName" />
+  </label>
+
+  <label>
+    Department:
+    <input type="text" id="filterDepartment" />
+  </label>
+
+  <label>
+    Role:
+    <input type="text" id="filterRole" />
+  </label>
+
+  <div class="sidebar-buttons">
+    <button onclick="renderEmployees()">Apply</button>
+    <button onclick="resetFilters()">Reset</button>
+  </div>
+</div>
+
   </div>
 
-  <!-- Footer -->
   <footer class="footer">© 2025 Employee Directory App. All rights reserved.</footer>
 
-  <!-- JS -->
   <script src="js/main.js"></script>
   <script>
     function toggleFilter() {
@@ -83,10 +122,10 @@
 
       if (!sidebar.classList.contains("hidden")) {
         addBtn.classList.add("hide-add-btn");
-        showCount.value = 3; // Show only 3 cards
+        showCount.value = 3; 
       } else {
         addBtn.classList.remove("hide-add-btn");
-        showCount.value = 10; // Restore default
+        showCount.value = 10; 
       }
 
       renderEmployees();
