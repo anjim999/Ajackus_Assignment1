@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Employee Directory</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div><h1>Employee Directory</h1></div>
+    <div class="search-input">
+      <input type="text" id="searchInput" placeholder="Search by name or email" onkeyup="renderEmployees()" />
+    </div>
+    <div class="filter-button">
+      <button onclick="toggleFilter()">Filter</button>
+    </div>
+  </header>
+
+  <!-- Controls Toolbar (below header, fixed) -->
+  <div class="controls-toolbar">
+    <section>
+      <label>Sort:
+        <select id="sortSelect" onchange="renderEmployees()">
+          <option value="">--Select--</option>
+          <option value="firstName">First Name</option>
+          <option value="department">Department</option>
+        </select>
+      </label>
+      <label>Show:
+        <select id="showCount" onchange="renderEmployees()">
+          <option>10</option>
+          <option>25</option>
+          <option>50</option>
+          <option>100</option>
+        </select>
+      </label>
+    </section>
+    <div>
+      <button id="addButton" class="add-btn" onclick="window.location.href='add_edit.html'">Add Employee</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Employee Cards Scroll Area -->
+    <div class="content">
+      <div id="employeeList" class="card-container"></div>
+    </div>
+
+    <!-- Sidebar Filter -->
+    <div class="sidebar hidden" id="filterSidebar">
+      <h3>Filter Employees</h3>
+      <label>First Name:
+        <input type="text" id="filterFirstName" />
+      </label>
+      <label>Department:
+        <input type="text" id="filterDepartment" />
+      </label>
+      <label>Role:
+        <input type="text" id="filterRole" />
+      </label>
+      <div class="sidebar-buttons">
+        <button onclick="renderEmployees()">Apply</button>
+        <button onclick="resetFilters()">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">© 2025 Employee Directory App. All rights reserved.</footer>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <script>
+    function toggleFilter() {
+      const sidebar = document.getElementById("filterSidebar");
+      const addBtn = document.getElementById("addButton");
+      const showCount = document.getElementById("showCount");
+
+      sidebar.classList.toggle("hidden");
+      sidebar.classList.toggle("show");
+
+      if (!sidebar.classList.contains("hidden")) {
+        addBtn.classList.add("hide-add-btn");
+        showCount.value = 3; // Show only 3 cards
+      } else {
+        addBtn.classList.remove("hide-add-btn");
+        showCount.value = 10; // Restore default
+      }
+
+      renderEmployees();
+    }
+  </script>
+</body>
+</html>

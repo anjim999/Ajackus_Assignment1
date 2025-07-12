@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Add/Edit Employee</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="form-container">
+    <h2 id="formTitle">Add Employee</h2>
+    <form id="employeeForm" onsubmit="saveEmployee(event)">
+      <input type="text" id="firstName" placeholder="First Name" required />
+      <input type="text" id="lastName" placeholder="Last Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <select id="department" required>
+        <option value="">Select Department</option>
+        <option value="HR">HR</option>
+        <option value="IT">IT</option>
+        <option value="Finance">Finance</option>
+      </select>
+      <select id="role" required>
+        <option value="">Select Role</option>
+        <option value="Manager">Manager</option>
+        <option value="Developer">Developer</option>
+        <option value="Analyst">Analyst</option>
+      </select>
+      <div class="form-buttons">
+        <button type="button" onclick="window.location.href='index.html'">Cancel</button>
+        <button type="submit" class="primary">Add</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
